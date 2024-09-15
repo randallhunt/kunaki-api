@@ -28,9 +28,9 @@ Usage: `getShippingOptions({ Destination: {}, Products: [] })`
 Destination object:
 ```javascript
 {
-  State_Province: "",
-  PostalCode: "",
-  Country: ""  // must match on of the strings in the countriesList array (see below)
+  State_Province: "New York",
+  PostalCode: "90929",
+  Country: "United States"  // must match on of the strings in the countriesList array (see below)
 }
 ```
 
@@ -38,7 +38,7 @@ Products array:
 ```javascript
 [
   {
-    ProductId: "",
+    ProductId: "838949",
     Quantity: 1
   },
   // ...
@@ -60,16 +60,18 @@ Auth object:
 Order object:
 ```javascript
 {
-  Name: "",
-  Address1: "",
+  Name: "Fred Flintstone",
+  Company: "Spacely Sprockets",
+  Address1: "123 Rock St",
   Address2: "",
-  City: "",
-  State_Province: "",
-  PostalCode: "",
-  Country: ""
+  City: "Bedrock",
+  State_Province: "Somewhere",
+  PostalCode: "12345",
+  Country: "United States",
   Products: [
     { ProductId: "", Quantity: 1 }
-  ]
+  ],
+  ShippingDescription: "USPS ground" // must match the name returned by the query above
 }
 ```
 
