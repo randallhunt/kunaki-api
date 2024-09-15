@@ -19,6 +19,59 @@ You will need to have an account with Kunaki, and products defined with them.
 >
 > This problem does not exist in backend/API code.
 
+```javascript
+import Kunaki from 'kunaki-api'
+
+const auth = {
+  UserId: process.env.KUNAKI_USERID,
+  Password: process.env.KUNAKI_PASSWORD
+}
+
+const lookup = async () => {
+  const response = Kunaki.getShippingOptions({
+    Destination: {
+      State_Province: "New York",
+      PostalCode: "90929",
+      Country: "United States"
+    },
+    Products: [
+      { ProductId: "12345", Quantity: 1 }
+    ]
+  })
+  return shippingOptions
+}
+
+const order = async () => {
+  const response = Kunaki.placeOrder({
+    Auth: auth,
+    Order: {
+      Name: "Fred Flintstone",
+      Company: "Spacely Sprockets",
+      Address1: "123 Rock St",
+      Address2: "",
+      City: "Bedrock",
+      State_Province: "Somewhere",
+      PostalCode: "12345",
+      Country: "United States",
+      Products: [
+        { ProductId: "12345", Quantity: 1 }
+      ],
+      ShippingDescription: "USPS ground"
+    },
+    Mode: "LIVE"
+  })
+  return response.OrderId
+}
+
+const status = async () => {
+  const response = await Kunaki.getOrderStatus({
+    Auth: auth,
+    OrderId: "12345"
+  })
+  return response
+}
+```
+
 ### Methods
 
 #### `getShippingOptions()`
