@@ -1,14 +1,21 @@
-import { OrderStatusQuery, OrderStatusResponse, OrderSubmission, OrderSubmissionResponse, ShippingOptionsQuery } from '../types/api'
+import {
+  OrderStatusQuery,
+  OrderStatusResponse,
+  OrderSubmission,
+  OrderSubmissionResponse,
+  ShippingOptionsQuery,
+} from '../types/api'
 import { ShippingOption } from '../types/models'
 import { XMLBuilder, XMLParser } from 'fast-xml-parser'
 
 const parser = new XMLParser()
 const builder = new XMLBuilder({ ignoreAttributes: true })
 
+const KunakiHost = process.env.KUNAKI_HOST || 'unittest'
 
 export const sendRequest = async (req: any) => {
   const body = builder.build(req)
-  const response = await fetch('https://unittest/XMLService.ASP', {
+  const response = await fetch(`https://${KunakiHost}/XMLService.ASP`, {
     method: 'POST',
     headers: {
       Accept: 'application/xml',
@@ -34,13 +41,13 @@ export const sendRequest = async (req: any) => {
 
 export const shippingOptions = async ({
   Destination,
-  Products
+  Products,
 }: ShippingOptionsQuery): Promise<ShippingOption[]> => {
   const req = {
     ShippingOptions: {
       ...Destination,
-      Product: Products
-    }
+      Product: Products,
+    },
   }
   const response = await sendRequest(req)
   return response.Option
@@ -49,33 +56,89 @@ export const shippingOptions = async ({
 export const placeOrder = async ({
   Auth,
   Order,
-  Mode = 'TEST'
+  Mode = 'TEST',
 }: OrderSubmission): Promise<OrderSubmissionResponse> => {
-  const req = {Order: {
-    ...Auth,
-    ...Order,
-    Mode
-  }}
+  const req = {
+    Order: {
+      ...Auth,
+      ...Order,
+      Mode,
+    },
+  }
   const response = await sendRequest(req)
   return response
 }
 
 export const getOrderStatus = async ({
   Auth,
-  OrderId
+  OrderId,
 }: OrderStatusQuery): Promise<OrderStatusResponse> => {
-  const req = {OrderStatus: {
-    ...Auth,
-    OrderId
-  }}
+  const req = {
+    OrderStatus: {
+      ...Auth,
+      OrderId,
+    },
+  }
   const response = await sendRequest(req)
   return response
 }
 
+const countriesList = [
+  'Australia',
+  'Austria',
+  'Belgium',
+  'Bulgaria',
+  'Canada',
+  'China',
+  'Cyprus',
+  'Czech Republic',
+  'Denmark',
+  'Estonia',
+  'Finland',
+  'France',
+  'Germany',
+  'Gibraltar',
+  'Greenland',
+  'Hong Kong',
+  'Hungary',
+  'Iceland',
+  'Ireland',
+  'Italy',
+  'Japan',
+  'Latvia',
+  'Liechtenstein',
+  'Lithuania',
+  'Luxembourg',
+  'Mexico',
+  'Netherlands',
+  'New Zealand',
+  'Norway',
+  'Poland',
+  'Portugal',
+  'Romania',
+  'Singapore',
+  'Slovakia',
+  'Slovenia',
+  'Spain',
+  'Sweden',
+  'Switzerland',
+  'Taiwan',
+  'Turkey',
+  'Ukraine',
+  'United Kingdom',
+  'United States',
+  'Vatican City',
+  'Yugoslavia',
+]
+
+const countrySelectOptions = countriesList.map((c) => ({ label: c, value: c }))
+
 const Kunaki = {
+  countriesList,
+  countrySelectOptions,
   shippingOptions,
   placeOrder,
-  getOrderStatus
+  getOrderStatus,
 }
 
 export default Kunaki
