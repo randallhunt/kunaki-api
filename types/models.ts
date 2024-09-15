@@ -1,26 +1,26 @@
 export interface Product {
-  id: string
-  quantity: number
+  ProductId: string
+  Quantity: number
 }
 
 export interface ShippingDestination {
-  country: string
-  stateOrProvince: string
-  postalCode: string
+  Country: string
+  State_Province: string
+  PostalCode: string
 }
 
 export interface Order extends ShippingDestination {
-  name: string
-  company: string
-  address1: string
-  address2: string
-  city: string
-  products: Product[]
-  shippingDescription: string
+  Name: string
+  Company: string
+  Address1: string
+  Address2: string
+  City: string
+  Product: Product[]
+  ShippingDescription: string
 }
 
 export interface ShippingOption {
-  description: string
-  deliveryTime: string
-  price: string
+  Description: string
+  DeliveryTime: string
+  Price: string
 }

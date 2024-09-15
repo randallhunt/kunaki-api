@@ -1,33 +1,33 @@
 import { Order, Product, ShippingDestination } from "./models"
 
 export interface Auth {
-  userId: string
-  password: string
+  UserId: string
+  Password: string
 }
 
 export interface ShippingOptionsQuery {
-  destination: ShippingDestination
-  products: Product[]  
+  Destination: ShippingDestination
+  Products: Product[]  
 }
 
 export interface OrderStatusQuery {
-  auth: Auth
-  orderId: string
+  Auth: Auth
+  OrderId: string
 }
 
 export interface OrderStatusResponse {
-  orderId: string
-  orderStatus: string
-  trackingType: string
-  trackingId: string
+  OrderId: string
+  OrderStatus: string
+  TrackingType: string
+  TrackingId: string
 }
 
 export interface OrderSubmission {
-  auth: Auth
-  order: Order
-  mode: "TEST" | "LIVE"
+  Auth: Auth
+  Order: Order
+  Mode: "TEST" | "LIVE"
 }
 
 export interface OrderSubmissionResponse {
-  orderId: string
+  OrderId: string
 }
