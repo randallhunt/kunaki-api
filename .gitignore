@@ -19,7 +19,7 @@ yarn.lock
 tslint-to-eslint-config.log
 
 # build
-lib/
+dist/
 
 # project specific
 todo.md
