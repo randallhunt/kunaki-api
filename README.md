@@ -23,15 +23,69 @@ You will need to have an account with Kunaki, and products defined with them.
 
 #### `getShippingOptions()`
 
-Usage: `getShippingOptions({ ShippingLocation: {}, Products: [] })`
+Usage: `getShippingOptions({ Destination: {}, Products: [] })`
+
+Destination object:
+```javascript
+{
+  State_Province: "",
+  PostalCode: "",
+  Country: ""  // must match on of the strings in the countriesList array (see below)
+}
+```
+
+Products array:
+```javascript
+[
+  {
+    ProductId: "",
+    Quantity: 1
+  },
+  // ...
+]
+```
 
 #### `placeOrder()`
 
-Usage: `placeOrder({ Recipient: {}, Products: {}, Mode: "TEST" | "LIVE" })`
+Usage: `placeOrder({ Auth: {}, Order: {}, Mode: "TEST" | "LIVE" })`
+
+Auth object:
+```javascript
+{
+  UserId: "kunaki-user-id",
+  Password: "kunaki-password"
+}
+```
+
+Order object:
+```javascript
+{
+  Name: "",
+  Address1: "",
+  Address2: "",
+  City: "",
+  State_Province: "",
+  PostalCode: "",
+  Country: ""
+  Products: [
+    { ProductId: "", Quantity: 1 }
+  ]
+}
+```
+
+> Note: Set `Mode = 'TEST'` to test the API without placing a real order.
 
 #### `checkOrderStatus()`
 
 Usage: `checkOrderStatus({ Auth: {}, OrderId: "" })`
+
+Auth object:
+```javascript
+{
+  UserId: "kunaki-user-id",
+  Password: "kunaki-password"
+}
+```
 
 ### Constants
 
