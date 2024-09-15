@@ -13,7 +13,7 @@ const builder = new XMLBuilder({ ignoreAttributes: true })
 
 const KunakiHost = process.env.KUNAKI_HOST || 'unittest'
 
-export const sendRequest = async (req: any) => {
+export const sendRequest = async (req: object) => {
   const body = builder.build(req)
   const response = await fetch(`https://${KunakiHost}/XMLService.ASP`, {
     method: 'POST',
@@ -29,7 +29,7 @@ export const sendRequest = async (req: any) => {
   try {
     doc = parser.parse(xml)
   } catch (e) {
-    throw new Error('xml parsing error')
+    throw new Error(`xml parsing error: ${e}`)
   }
   if (doc.ErrorCode) {
     const errorText = doc.ErrorText
