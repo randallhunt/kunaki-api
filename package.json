@@ -24,7 +24,6 @@
     "lint:code": "eslint ./src --ignore-path .gitignore",
     "lint": "npm-run-all --parallel lint:*",
     "prepack": "npm run build",
-    "prepare": "husky",
     "publish:npm": "np --no-yarn",
     "start": "npm run dev",
     "test": "uvu --require tsm tests"
