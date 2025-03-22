@@ -6,6 +6,7 @@ node_modules/
 vendor/
 
 # package manager files
+.yarn
 npm-debug.log*
 package-lock.json
 yarn-error.log
