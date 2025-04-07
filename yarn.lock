@@ -2022,7 +2022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.18.0":
+"enhanced-resolve@npm:^5.18.1":
   version: 5.18.1
   resolution: "enhanced-resolve@npm:5.18.1"
   dependencies:
@@ -3927,13 +3927,13 @@ __metadata:
   linkType: hard
 
 "knip@npm:^5.30.2":
-  version: 5.46.0
-  resolution: "knip@npm:5.46.0"
+  version: 5.47.0
+  resolution: "knip@npm:5.47.0"
   dependencies:
     "@nodelib/fs.walk": 3.0.1
     "@snyk/github-codeowners": 1.1.0
     easy-table: 1.2.0
-    enhanced-resolve: ^5.18.0
+    enhanced-resolve: ^5.18.1
     fast-glob: ^3.3.3
     jiti: ^2.4.2
     js-yaml: ^4.1.0
@@ -3952,7 +3952,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 308e36787829e44e2cd32623deb8c88721e1eede300c4946a36f58065ba99b519c547202877d6c3d00d068bbeb0a0de8a63ecd5b09057670a6260a5fd82ca6ab
+  checksum: da0111aa7e5f85819480fc83f049d7cf3c7d5de969cecd3c8ecff16af3aec5e975c6d378726b78cd3e08ff1be8b9332257730913e53d3fc77a26db90ec45dd8c
   languageName: node
   linkType: hard
 
