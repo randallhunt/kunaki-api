@@ -45,7 +45,7 @@
 	"devDependencies": {
 		"@eslint/js": "^9.10.0",
 		"@types/eslint__js": "^9.14.0",
-		"@types/node": "^22.5.5",
+		"@types/node": "^24.0.3",
 		"eslint": "^9.10.0",
 		"knip": "^5.30.2",
 		"msw": "^2.4.6",
